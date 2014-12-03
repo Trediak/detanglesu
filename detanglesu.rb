@@ -106,7 +106,7 @@ module DetangleSu
       right_temp = right_temp.gsub(/\,\s*\\\s*/,',')
 
       # remove leading "\" and collapse whitespace on same command continuation
-      right_temp = right_temp.gsub(/\s*\\(?!,)\s*/, ' ')
+      right_temp = right_temp.gsub(/\s*[^\\]\\(?!,)[^\\]\s*/, ' ')
 
       # remove possible left space and split on ","
       right_side = right_temp.lstrip.split(/(?<!\\),/)
@@ -221,6 +221,17 @@ module DetangleSu
         return "PASSWD:"
       when 2
         return "NOPASSWD:"
+      else
+        return ""
+      end
+    end
+
+    def get_flag_number(flag)
+      case flag
+      when "PASSWD:"
+        return 1
+      when "NOPASSWD:"
+        return 2
       else
         return ""
       end
