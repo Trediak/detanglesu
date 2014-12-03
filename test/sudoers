@@ -29,6 +29,8 @@ Runas_Alias  RA_ONE  = acct_aaaa, acct_bbbb, acct_cccc, \
                        acct_dddd
 Runas_Alias  RA_TWO  = acct_eeee, acct_ffff
 
+Runas_Alias  RA_THREE = acct_iiii
+
 Host_Alias   HA_ONE  = host_00001, host_00002, host_00003, \
                        host_00004
 Host_Alias   HA_TWO  = host_00001, host_00002, host_00005
@@ -41,5 +43,9 @@ UA_ONE,user_jjjj,user_kkkk  HA_ONE,host_00006 = (RA_ONE) CA_ONE, /usr/bin/comman
                                                 /usr/bin/command9, (acct_gggg) /usr/bin/command10 \
                                                 "span 2 lines", /usr/bin/command11 \\ "backslash escape test"
 
-user_aaaa,user_llll  host_00007,host_00008,host_00009 = NOPASSWD: /usr/bin/commmand12, PASSWD: /usr/bin/command13 \, "comma escape test", \
+user_aaaa,user_llll  host_00007,host_00008,host_00009 = NOPASSWD: /usr/bin/command12, PASSWD: /usr/bin/command13 \, "comma escape test", \
                                                        (acct_hhhh) NOPASSWD: /usr/bin/command14 -flag1 "switch user and PASSWD flag"
+
+user_mmmm  HA_TWO = (RA_TWO) /usr/bin/command15, /usr/bin/command16
+
+user_nnnn  host_00010 = (acct_iiii) /usr/bin/command17, /usr/bin/command18

@@ -226,6 +226,17 @@ module DetangleSu
       end
     end
 
+    def get_flag_number(flag)
+      case flag
+      when "PASSWD:"
+        return 1
+      when "NOPASSWD:"
+        return 2
+      else
+        return ""
+      end
+    end
+
   private
     def expand_users(user_list)
       full_user_list = []
